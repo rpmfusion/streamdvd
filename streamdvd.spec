@@ -1,7 +1,7 @@
 %{!?perl_vendorarch: %define perl_vendorarch %(eval "`%{__perl} -V:installvendorarch`"; echo $installvendorarch)}
 Name:           streamdvd
 Version:        0.4
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        A fast tool to backup Video DVDs
 
 Group:          Applications/Multimedia 
@@ -13,6 +13,7 @@ Patch1:         streamdvd-streamdvd.patch
 Patch2:         streamdvd-lsdvd.patch
 Patch3:         streamdvd-gui.patch
 Patch4:         streamdvd-gcc41.patch
+Patch5:         streamdvd-gcc43.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  libdvdread-devel >= 0.9.2
@@ -56,6 +57,7 @@ Graphical user interface for streamdvd
 %patch2
 %patch3
 %patch4 -p1
+%patch5 -p1
 
 %{__perl} -pi -e 's/(Tk::JPEG)::Lite/$1/' \
 %{_builddir}/StreamDVD-%{version}/Gui/StreamDVD/Gui.pm
@@ -103,6 +105,9 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/StreamDVD
 
 %changelog
+* Tue Oct 07 2008 Xavier Lamien <lxtnow[at]gmail.com> - 0.4-8
+- Fix build against gcc-4.3.
+
 * Sat Aug 09 2008 Thorsten Leemhuis <fedora [AT] leemhuis [DOT] info - 0.4-7
 - rebuild for RPM Fusion
 
