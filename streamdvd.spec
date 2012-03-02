@@ -1,7 +1,7 @@
 %{!?perl_vendorarch: %define perl_vendorarch %(eval "`%{__perl} -V:installvendorarch`"; echo $installvendorarch)}
 Name:           streamdvd
 Version:        0.4
-Release:        10%{?dist}
+Release:        11%{?dist}
 Summary:        A fast tool to backup Video DVDs
 
 Group:          Applications/Multimedia 
@@ -105,6 +105,9 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/StreamDVD
 
 %changelog
+* Fri Mar 02 2012 Nicolas Chauvet <kwizart@gmail.com> - 0.4-11
+- Rebuilt for c++ ABI breakage
+
 * Wed Feb 08 2012 Nicolas Chauvet <kwizart@gmail.com> - 0.4-10
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
 
